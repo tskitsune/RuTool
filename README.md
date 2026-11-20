@@ -5,7 +5,7 @@ Linux-версия RuTool для Blue Archive. Работают поиск иг�
 
 **Linux x86_64, glibc ≥2.39.** Qt включён в AppImage.
 
-[Скачать AppImage](https://github.com/tskitsune/RuTool/releases/tag/v2.0.8-linux) · [Сборка и запуск](client-v2/BUILDING-LINUX.md)
+[Скачать AppImage](https://github.com/tskitsune/RuTool-Linux/releases/tag/v2.0.8-linux) · [Сборка и запуск](client-v2/BUILDING-LINUX.md)
 
 **Steam Deck** — работа проверена.
 

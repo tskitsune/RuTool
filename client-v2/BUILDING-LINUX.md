@@ -6,7 +6,7 @@ Qt и QML-модули уже включены; графические драй�
 
 ## Запуск
 
-Скачай AppImage из [релизов](https://github.com/tskitsune/RuTool/releases/tag/v2.0.8-linux):
+Скачай AppImage из [релизов](https://github.com/tskitsune/RuTool-Linux/releases/tag/v2.0.8-linux):
 
 ```sh
 chmod +x RuTool-2.0.8-x86_64.AppImage

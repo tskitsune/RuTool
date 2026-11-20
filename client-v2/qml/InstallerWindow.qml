@@ -124,7 +124,7 @@ ApplicationWindow {
                         text: "Обновить форк ↗"; font.pixelSize: 10
                         leftPadding: 0; rightPadding: 0; topPadding: 0; bottomPadding: 0
                         hint: "Открыть GitHub Linux-сборки"
-                        onClicked: Qt.openUrlExternally("https://github.com/tskitsune/RuTool")
+                        onClicked: Qt.openUrlExternally("https://github.com/tskitsune/RuTool-Linux")
                     }
                 }
             }
