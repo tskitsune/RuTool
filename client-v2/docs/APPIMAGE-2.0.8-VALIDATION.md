@@ -2,7 +2,7 @@
 
 ## Артефакт
 
-* Путь: `/mnt/2tb/Projects/RuToolRecompile/RuTool/client-v2/dist-appimage/RuTool-2.0.8-x86_64.AppImage`.
+* Файл: `client-v2/dist-appimage/RuTool-2.0.8-x86_64.AppImage` (от корня репозитория).
 * Размер: **49 908 216 байт** (47.60 MiB).
 * SHA-256: `3f4504f6adca673f4daded9c7fc256bc6f60332596df74fb8174eb6bf144650e`.
 * x86_64 ELF64, AppImage **Type 2**, статический runtime, SquashFS начинается с offset **944632**.
@@ -101,10 +101,10 @@ Linux-ветвью; поведение Windows сохранено по стат�
 
 ## Команды
 
-Запуск на текущем NixOS:
+Запуск на NixOS из корня репозитория:
 
 ```sh
-/run/binfmt/appimage /mnt/2tb/Projects/RuToolRecompile/RuTool/client-v2/dist-appimage/RuTool-2.0.8-x86_64.AppImage
+appimage-run ./client-v2/dist-appimage/RuTool-2.0.8-x86_64.AppImage
 ```
 
 Обычный эквивалент при наличии команды в PATH:
