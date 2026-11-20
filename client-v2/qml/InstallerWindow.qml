@@ -14,6 +14,7 @@ ApplicationWindow {
     color: Theme.color("#e6f3ff")
     font.family: "Segoe UI"; font.pixelSize: 15
     property string statusOverride: ""
+    readonly property bool linuxBuild: Qt.platform.os === "linux"
     readonly property bool packagePending: client.packagePending
     readonly property bool packageDownloading: client.packageDownloading
     readonly property bool working: client.busy
@@ -110,6 +111,22 @@ ApplicationWindow {
                 HoverHandler { id: versionHover; enabled: mainContent.enabled && mainContent.visible }
                 ToolTip.visible: mainContent.enabled && mainContent.visible && versionHover.hovered
                 ToolTip.text: "Версия установленной программы"
+                Row {
+                    visible: window.linuxBuild
+                    anchors.top: parent.bottom; anchors.topMargin: 3
+                    spacing: 10
+                    LegacyText {
+                        objectName: "linuxBuildLabel"
+                        text: "Linux-сборка"; font.pixelSize: 10; color: Theme.color("#637faa")
+                    }
+                    LegacyButton {
+                        objectName: "forkUpdateButton"; link: true
+                        text: "Обновить форк ↗"; font.pixelSize: 10
+                        leftPadding: 0; rightPadding: 0; topPadding: 0; bottomPadding: 0
+                        hint: "Открыть GitHub Linux-сборки"
+                        onClicked: Qt.openUrlExternally("https://github.com/tskitsune/RuTool")
+                    }
+                }
             }
             Item { width: 20; height: 1 }
             Rectangle { width: 1; height: 22; color: Theme.color("#90adce"); opacity: 0.65; y: 20 }

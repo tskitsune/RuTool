@@ -26,9 +26,28 @@ LegacyDialogWindow {
                     model: panel.entries
                     Item {
                         required property var modelData
-                        width: people.width; height: Math.max(role.implicitHeight, name.implicitHeight)
+                        width: people.width
+                        height: Math.max(role.implicitHeight, name.implicitHeight) + (linuxCredit.visible ? linuxCredit.height + 20 : 0)
                         LegacyText { id: role; width: parent.width * 0.52; text: modelData.role; wrapMode: Text.Wrap; color: Theme.color("#627da6"); font.pixelSize: 14 }
                         LegacyText { id: name; anchors.right: parent.right; width: parent.width * 0.43; text: modelData.name; wrapMode: Text.Wrap; horizontalAlignment: Text.AlignRight; font.weight: Font.DemiBold; font.pixelSize: 14 }
+                        Item {
+                            id: linuxCredit
+                            visible: Qt.platform.os === "linux" && String(modelData.role).trim().toLowerCase() === "совладелец"
+                            y: Math.max(role.implicitHeight, name.implicitHeight) + 20
+                            width: parent.width; height: Math.max(linuxRole.implicitHeight, linuxMaintainer.implicitHeight)
+                            LegacyText {
+                                id: linuxRole; width: parent.width * 0.52
+                                text: "Linux-сборка"; wrapMode: Text.Wrap
+                                color: Theme.color("#627da6"); font.pixelSize: 14
+                            }
+                            LegacyButton {
+                                id: linuxMaintainer; objectName: "linuxMaintainerLink"
+                                anchors.right: parent.right; text: "tskitsune"; link: true
+                                leftPadding: 0; rightPadding: 0; topPadding: 0; bottomPadding: 0
+                                font.weight: Font.DemiBold; font.pixelSize: 14
+                                onClicked: Qt.openUrlExternally("https://github.com/tskitsune")
+                            }
+                        }
                     }
                 }
                 LegacyText { visible: panel.entries.length === 0; text: "Список участников пока пуст"; width: parent.width; wrapMode: Text.WordWrap; font.pixelSize: 14; color: Theme.color("#637fa4") }
