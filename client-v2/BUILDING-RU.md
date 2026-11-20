@@ -41,4 +41,4 @@
 При другом ключе также задаётся `RUTOOL_RELEASE_PUBLIC_KEY`. Без манифеста
 эта отдельная проверка явно отмечается как SKIP.
 
-Linux: см. [BUILDING-LINUX.md](BUILDING-LINUX.md). Windows-сценарии сохранены.
+Сборка для Linux: [BUILDING-LINUX.md](BUILDING-LINUX.md).
