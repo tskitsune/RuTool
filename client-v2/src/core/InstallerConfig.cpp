@@ -2,16 +2,25 @@
 #include <QCoreApplication>
 #include <QDir>
 #include <QFile>
+#include <QFileInfo>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QStandardPaths>
 
 namespace rutool {
 QString installerConfigPath(const QString& name) {
+#ifdef Q_OS_LINUX
+    if (name == QStringLiteral("installer-keys.json")) {
+        const auto overridePath = QDir(QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation)).filePath(QStringLiteral("rutool/installer-keys.json"));
+        // An invalid override must report an error rather than silently use the bundled file.
+        if (QFileInfo::exists(overridePath) || QFileInfo(overridePath).isSymLink()) return overridePath;
+    }
+#endif
     return QDir(QCoreApplication::applicationDirPath()).filePath(QStringLiteral("app/config/") + name);
 }
 Result<platform::Secret> readPackagePassword(const QString& path) {
     const auto invalid = [&path] { return std::unexpected(Error{ErrorCode::InvalidInput,
-        QStringLiteral("Не удалось прочитать пароль .rut. Проверьте файл app/config/installer-keys.json."), path}); };
+        QStringLiteral("Не удалось прочитать пароль .rut. Проверьте файл конфигурации: %1").arg(path), path}); };
     QFile file(path);
     if (!file.open(QIODevice::ReadOnly) || file.size() > 16 * 1024) return invalid();
     QJsonParseError error;
